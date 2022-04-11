@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nesca\\RiderProjects\\FandiApi\\FandiApi\\FandiApi.csproj": {}
+    "C:\\Users\\nesca\\RiderProjects\\FandiApi\\Fandi\\FandiApi\\FandiApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nesca\\RiderProjects\\FandiApi\\FandiApi\\FandiApi.csproj": {
+    "C:\\Users\\nesca\\RiderProjects\\FandiApi\\Fandi\\FandiApi\\FandiApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nesca\\RiderProjects\\FandiApi\\FandiApi\\FandiApi.csproj",
+        "projectUniqueName": "C:\\Users\\nesca\\RiderProjects\\FandiApi\\Fandi\\FandiApi\\FandiApi.csproj",
         "projectName": "FandiApi",
-        "projectPath": "C:\\Users\\nesca\\RiderProjects\\FandiApi\\FandiApi\\FandiApi.csproj",
+        "projectPath": "C:\\Users\\nesca\\RiderProjects\\FandiApi\\Fandi\\FandiApi\\FandiApi.csproj",
         "packagesPath": "C:\\Users\\nesca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nesca\\RiderProjects\\FandiApi\\FandiApi\\obj\\",
+        "outputPath": "C:\\Users\\nesca\\RiderProjects\\FandiApi\\Fandi\\FandiApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nesca\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0-preview.2.22153.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.0-preview.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
