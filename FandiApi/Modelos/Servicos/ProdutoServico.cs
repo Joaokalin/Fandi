@@ -14,11 +14,8 @@ public class ProdutoServico : IProdutoServico
         _apiDbContext = apiDbContext;
     }
     
-    public async Task InserirAsync(Produto produto)
-    {
-        await _apiDbContext.Produtos.AddAsync(produto);
-        await _apiDbContext.SaveChangesAsync();
-    }
+    public async Task<Produto> DetalharAsync(int id)
+        => await _apiDbContext.Produtos.FirstOrDefaultAsync(p => p.Id == id);
     
     public async Task<ProdutoListagem> ListarAsync(ProdutoFiltro filtro)
     {
@@ -29,6 +26,18 @@ public class ProdutoServico : IProdutoServico
         var produtos = await produtoConsulta.Skip(filtro.Indice).Take(filtro.Tamanho).ToListAsync();
 
         return new ProdutoListagem() {Quantidade = quantidade, Produtos = produtos};
+    }
+    
+    public async Task InserirAsync(Produto produto)
+    {
+        await _apiDbContext.Produtos.AddAsync(produto);
+        await _apiDbContext.SaveChangesAsync();
+    }
+    
+    public async Task DeletarAsync(Produto produto)
+    {
+        _apiDbContext.Produtos.Remove(produto);
+        await _apiDbContext.SaveChangesAsync();
     }
     
 }
