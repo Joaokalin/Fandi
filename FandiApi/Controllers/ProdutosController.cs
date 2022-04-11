@@ -1,4 +1,5 @@
 using FandiApi.Modelos.Contratos.Produtos;
+using FandiApi.Modelos.DTOS.Produtos;
 using FandiApi.Modelos.Entidades.Produtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,4 +24,22 @@ public class ProdutosController : ControllerBase
         if (produto == null) return NotFound();
         return Ok(produto);
     }
+    
+    [HttpPost]
+    public async Task<IActionResult> Inserir([FromBody] ProdutoDto produtoDto, [FromServices] IProdutoServico servico)
+    {
+        await servico.InserirAsync(produtoDto.Map());
+        return Ok();
+    }
+    
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Deletar([FromRoute] int id, [FromServices] IProdutoServico servico)
+    {
+        var produto = await servico.DetalharAsync(id);
+        if (produto == null) return BadRequest();
+
+        await servico.DeletarAsync(produto);
+        return Ok();
+    }
+
 }
