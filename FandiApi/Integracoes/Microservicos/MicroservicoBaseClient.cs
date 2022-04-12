@@ -37,7 +37,7 @@ public class MicroservicoBaseClient
             if (typeof(T) == typeof(bool)) return (true, string.Empty, (T)(object)true);
             return (true, string.Empty, JsonConvert.DeserializeObject<T>(conteudoResposta));
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             var erro = conteudoResposta.Substring(0, Math.Min(conteudoResposta.Length, 100));
 

@@ -6,7 +6,13 @@ namespace FandiApi.Infraestrutura;
 public class ApiDbContext : DbContext
 {
     public DbSet<Produto> Produtos { get; set; }
+
     public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options)
     {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Produto>().Map();
     }
 }

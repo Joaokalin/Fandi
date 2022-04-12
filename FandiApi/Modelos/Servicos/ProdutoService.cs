@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FandiApi.Modelos.Servicos;
 
-public class ProdutoServico : IProdutoServico
+public class ProdutoService : IProdutoServico
 {
     private readonly ApiDbContext _apiDbContext;
 
-    public ProdutoServico(ApiDbContext apiDbContext)
+    public ProdutoService(ApiDbContext apiDbContext)
     {
         _apiDbContext = apiDbContext;
     }

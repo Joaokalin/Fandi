@@ -1,4 +1,5 @@
 using FandiApi.Infraestrutura;
+using FandiApi.Integracoes.Microservicos;
 using FandiApi.Integracoes.MicroservicosOpcoes;
 using FandiApi.Modelos.Contratos.Compras;
 using FandiApi.Modelos.Contratos.Produtos;
@@ -11,16 +12,25 @@ var services = builder.Services;
 services.AddControllers();
 services.AddEndpointsApiExplorer();
 
+
+services.AddTransient<IProdutoServico, ProdutoService>();
+services.AddTransient<ICompraServico, CompraService>();
+
 //conexão Pgsql
-services.AddDbContext<ApiDbContext>(options => options.UseNpgsql( builder.Configuration["BaseDeDados:Pgsql"]));
+services.AddDbContext<ApiDbContext>(options => options
+    .UseNpgsql(builder.Configuration["BaseDeDados:Pgsql"], pgsql => { pgsql.EnableRetryOnFailure(); }));
 
-services.AddTransient<IProdutoServico, ProdutoServico>();
-services.AddTransient<ICompraServico, CompraServico>();
+services.AddSingleton(builder.Configuration);
 
+services.AddHttpClient<PagamentoMicroservicoClient>();
 services.Configure<MicroservicoOpcoes>(builder.Configuration.GetSection("Integracoes:Microservicos"));
+
+
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+app.UsePathBase("/api");
+
+app.UseRouting();
 
 app.UseAuthorization();
 
