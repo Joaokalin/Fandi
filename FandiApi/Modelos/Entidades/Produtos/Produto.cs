@@ -25,4 +25,10 @@ public class Produto
         Qtde_estoque -= quantidade;
         return (true, string.Empty);
     }
+
+    public void Atualizar(int id)
+    {
+        Id = id;
+        Ultima_atualizaçao_em = DateTime.Now;
+    }
 }
