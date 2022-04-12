@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FandiApi.Modelos.Servicos;
 
-public class ProdutoService : IProdutoServico
+public class ProdutoRepositorio : IProdutoRepositorio
 {
     private readonly ApiDbContext _apiDbContext;
 
-    public ProdutoService(ApiDbContext apiDbContext)
+    public ProdutoRepositorio(ApiDbContext apiDbContext)
     {
         _apiDbContext = apiDbContext;
     }
@@ -42,7 +42,7 @@ public class ProdutoService : IProdutoServico
     
     public async Task<(bool status, string erro)> ComprarAsync(Produto produto, int quantidade)
     {
-        var comprar = produto.Comprar(quantidade);
+        var comprar = new ComprarProduto().Comprar(produto, quantidade);
         if (!comprar.status) return comprar;
         
         _apiDbContext.Produtos.Update(produto);
@@ -53,7 +53,8 @@ public class ProdutoService : IProdutoServico
 
     public async Task<Produto> AtualizarAsync(Produto produto, int id)
     {
-        produto.Atualizar(id);
+        new AtualizarProduto().Atualizar(produto, id);
+        
         _apiDbContext.Produtos.Update(produto);
         await _apiDbContext.SaveChangesAsync();
         return produto;

@@ -10,14 +10,14 @@ namespace FandiApi.Controllers;
 public class ProdutosController : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> Listar([FromQuery] ProdutoFiltro filtro, [FromServices] IProdutoServico servico)
+    public async Task<IActionResult> Listar([FromQuery] ProdutoFiltro filtro, [FromServices] IProdutoRepositorio servico)
     {
         var produtoListagem = await servico.ListarAsync(filtro);
         return Ok(produtoListagem);
     }
 
     [HttpGet("{id:int}")]
-    public async Task<IActionResult> Detalhar([FromRoute] int id, [FromServices] IProdutoServico servico)
+    public async Task<IActionResult> Detalhar([FromRoute] int id, [FromServices] IProdutoRepositorio servico)
     {
         var produto = await servico.DetalharAsync(id);
 
@@ -26,14 +26,14 @@ public class ProdutosController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> Inserir([FromBody] ProdutoDto produtoDto, [FromServices] IProdutoServico servico)
+    public async Task<IActionResult> Inserir([FromBody] ProdutoDto produtoDto, [FromServices] IProdutoRepositorio servico)
     {
         await servico.InserirAsync(produtoDto.Map());
         return Ok("Produto cadastrado");
     }
     
     [HttpDelete("{id:int}")]
-    public async Task<IActionResult> Deletar([FromRoute] int id, [FromServices] IProdutoServico servico)
+    public async Task<IActionResult> Deletar([FromRoute] int id, [FromServices] IProdutoRepositorio servico)
     {
         var produtoDetalhado = await servico.DetalharAsync(id);
         if (produtoDetalhado == null) return BadRequest("Ocorreu um erro desconhecido");
@@ -43,7 +43,7 @@ public class ProdutosController : ControllerBase
     }
     
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Atualizar([FromRoute] int id, [FromBody] ProdutoDto produtoDTO, [FromServices] IProdutoServico servico)
+    public async Task<IActionResult> Atualizar([FromRoute] int id, [FromBody] ProdutoDto produtoDTO, [FromServices] IProdutoRepositorio servico)
     {
         var produtoDetalhado = await servico.DetalharAsync(id);
         if (produtoDetalhado == null) return NotFound("Ocorreu um erro desconhecido");

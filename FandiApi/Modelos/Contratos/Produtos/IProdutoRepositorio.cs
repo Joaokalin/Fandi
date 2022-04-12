@@ -2,7 +2,7 @@ using FandiApi.Modelos.Entidades.Produtos;
 
 namespace FandiApi.Modelos.Contratos.Produtos;
 
-public interface IProdutoServico
+public interface IProdutoRepositorio
 {
     Task<Produto> DetalharAsync(int id);
     

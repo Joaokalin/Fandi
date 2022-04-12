@@ -6,11 +6,11 @@ using FandiApi.Modelos.DTOS.Compras;
 
 namespace FandiApi.Modelos.Servicos;
 
-public class CompraService : ICompraServico
+public class RealizarCompra : IRealizarCompra
 {
     private readonly PagamentoMicroservicoClient _pagamentoClient;
-    private readonly IProdutoServico _produtoServico;
-    public CompraService(PagamentoMicroservicoClient pagamentoClient, IProdutoServico produtoServico)
+    private readonly IProdutoRepositorio _produtoServico;
+    public RealizarCompra(PagamentoMicroservicoClient pagamentoClient, IProdutoRepositorio produtoServico)
     {
         _pagamentoClient = pagamentoClient;
         _produtoServico = produtoServico;

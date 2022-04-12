@@ -9,7 +9,7 @@ namespace FandiApi.Controllers;
 public class ComprasController : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Comprar([FromBody] CompraDto compraDto, [FromServices] ICompraServico compraServico)
+    public async Task<IActionResult> Comprar([FromBody] CompraDto compraDto, [FromServices] IRealizarCompra compraServico)
     {
         var (status, erro) = await compraServico.ComprarAsync(compraDto);
         if (!status) return BadRequest(erro);

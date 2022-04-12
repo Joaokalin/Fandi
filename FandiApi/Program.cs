@@ -13,8 +13,8 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 
 
-services.AddTransient<IProdutoServico, ProdutoService>();
-services.AddTransient<ICompraServico, CompraService>();
+services.AddTransient<IProdutoRepositorio, ProdutoRepositorio>();
+services.AddTransient<IRealizarCompra, RealizarCompra>();
 
 //conexão Pgsql
 services.AddDbContext<ApiDbContext>(options => options
