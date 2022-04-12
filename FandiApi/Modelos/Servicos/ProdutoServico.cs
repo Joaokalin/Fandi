@@ -50,4 +50,13 @@ public class ProdutoServico : IProdutoServico
 
         return (true, string.Empty);
     }
+
+    public async Task<Produto> AtualizarAsync(Produto produto, int id)
+    {
+        produto.Id = id;
+        _apiDbContext.Produtos.Update(produto);
+        await _apiDbContext.SaveChangesAsync();
+        return produto;
+    }
+
 }

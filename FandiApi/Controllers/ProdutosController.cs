@@ -35,11 +35,21 @@ public class ProdutosController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Deletar([FromRoute] int id, [FromServices] IProdutoServico servico)
     {
-        var produto = await servico.DetalharAsync(id);
-        if (produto == null) return BadRequest();
+        var produtoDetalhado = await servico.DetalharAsync(id);
+        if (produtoDetalhado == null) return BadRequest();
 
-        await servico.DeletarAsync(produto);
+        await servico.DeletarAsync(produtoDetalhado);
         return Ok();
+    }
+    
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Atualizar([FromRoute] int id, [FromBody] ProdutoDto produtoDTO, [FromServices] IProdutoServico servico)
+    {
+        var produtoDetalhado = await servico.DetalharAsync(id);
+        if (produtoDetalhado == null) return NotFound();
+
+        var produto = produtoDTO.Map();
+        return Ok(await servico.AtualizarAsync(produto, id));
     }
 
 }
