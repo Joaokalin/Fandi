@@ -21,7 +21,7 @@ public class ProdutosController : ControllerBase
     {
         var produto = await servico.DetalharAsync(id);
 
-        if (produto == null) return NotFound();
+        if (produto == null) return NotFound("Ocorreu um erro desconhecido");
         return Ok(produto);
     }
     
@@ -29,24 +29,24 @@ public class ProdutosController : ControllerBase
     public async Task<IActionResult> Inserir([FromBody] ProdutoDto produtoDto, [FromServices] IProdutoServico servico)
     {
         await servico.InserirAsync(produtoDto.Map());
-        return Ok();
+        return Ok("Produto cadastrado");
     }
     
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Deletar([FromRoute] int id, [FromServices] IProdutoServico servico)
     {
         var produtoDetalhado = await servico.DetalharAsync(id);
-        if (produtoDetalhado == null) return BadRequest();
+        if (produtoDetalhado == null) return BadRequest("Ocorreu um erro desconhecido");
 
         await servico.DeletarAsync(produtoDetalhado);
-        return Ok();
+        return Ok("Produto excluído com sucesso");
     }
     
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Atualizar([FromRoute] int id, [FromBody] ProdutoDto produtoDTO, [FromServices] IProdutoServico servico)
     {
         var produtoDetalhado = await servico.DetalharAsync(id);
-        if (produtoDetalhado == null) return NotFound();
+        if (produtoDetalhado == null) return NotFound("Ocorreu um erro desconhecido");
 
         var produto = produtoDTO.Map();
         return Ok(await servico.AtualizarAsync(produto, id));
