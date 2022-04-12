@@ -11,4 +11,6 @@ public interface IProdutoServico
     Task InserirAsync(Produto produto);
 
     Task DeletarAsync(Produto produto);
+
+    Task<(bool status, string erro)> ComprarAsync(Produto produto, int quantidade);
 }

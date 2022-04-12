@@ -40,4 +40,14 @@ public class ProdutoServico : IProdutoServico
         await _apiDbContext.SaveChangesAsync();
     }
     
+    public async Task<(bool status, string erro)> ComprarAsync(Produto produto, int quantidade)
+    {
+        var comprar = produto.Comprar(quantidade);
+        if (!comprar.status) return comprar;
+        
+        _apiDbContext.Produtos.Update(produto);
+        await _apiDbContext.SaveChangesAsync();
+
+        return (true, string.Empty);
+    }
 }
