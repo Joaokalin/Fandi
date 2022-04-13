@@ -12,7 +12,13 @@ Tabela de conteúdos
 ## 💻 Sobre o projeto
 
 O projeto é dividido em duas partes, uma api com um CRUD para produtos e uma outra api para validar a compra.
- 
+
+Tecnologias utilizadas: EntityFramework, Postgres.
+
+Foram seguidos alguns principios do SOLID.
+
+[Documentação](https://documenter.getpostman.com/view/17392143/UVz1NXt4) das apis.
+
 ---
 
 ## 🚀 Como executar o projeto
@@ -26,6 +32,8 @@ Após baixar os arquivos do projeto, use o comando dotnet ef database update no 
 Por fim, caso seja preciso, altere a connectionString no arquivo appSettings.
 
 Para iniciar você deve estar no diretorio FandiApi e usar o comando dotnet run
+
+E fazer o mesmo no diretorio FandiPaymentMicroservice para iniciar a segunda aplicação
 
 ---
 
