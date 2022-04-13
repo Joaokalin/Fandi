@@ -43,13 +43,12 @@ public class ProdutosController : ControllerBase
     }
     
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Atualizar([FromRoute] int id, [FromBody] ProdutoDto produtoDTO, [FromServices] IProdutoRepositorio servico)
+    public async Task<IActionResult> Atualizar([FromRoute] int id, [FromBody] ProdutoDto produtoDto, [FromServices] IProdutoRepositorio servico)
     {
         var produtoDetalhado = await servico.DetalharAsync(id);
         if (produtoDetalhado == null) return NotFound("Ocorreu um erro desconhecido");
 
-        var produto = produtoDTO.Map();
-        return Ok(await servico.AtualizarAsync(produto, id));
+        return Ok(await servico.AtualizarAsync(produtoDetalhado, produtoDto, id));
     }
 
 }

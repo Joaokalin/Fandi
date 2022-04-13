@@ -975,19 +975,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nesca\\.nuget\\packages\\": {}
+    "C:\\Users\\Next\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nesca\\RiderProjects\\FandiApi\\Fandi\\FandiApi\\FandiApi.csproj",
+      "projectUniqueName": "C:\\Users\\Next\\Desktop\\Fandi\\FandiApi\\FandiApi.csproj",
       "projectName": "FandiApi",
-      "projectPath": "C:\\Users\\nesca\\RiderProjects\\FandiApi\\Fandi\\FandiApi\\FandiApi.csproj",
-      "packagesPath": "C:\\Users\\nesca\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nesca\\RiderProjects\\FandiApi\\Fandi\\FandiApi\\obj\\",
+      "projectPath": "C:\\Users\\Next\\Desktop\\Fandi\\FandiApi\\FandiApi.csproj",
+      "packagesPath": "C:\\Users\\Next\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Next\\Desktop\\Fandi\\FandiApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nesca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Next\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1060,7 +1060,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

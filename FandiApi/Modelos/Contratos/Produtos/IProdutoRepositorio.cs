@@ -1,3 +1,4 @@
+using FandiApi.Modelos.DTOS.Produtos;
 using FandiApi.Modelos.Entidades.Produtos;
 
 namespace FandiApi.Modelos.Contratos.Produtos;
@@ -14,5 +15,5 @@ public interface IProdutoRepositorio
 
     Task<(bool status, string erro)> ComprarAsync(Produto produto, int quantidade);
 
-    Task<Produto> AtualizarAsync(Produto produto, int id);
+    Task<Produto> AtualizarAsync(Produto produto, ProdutoDto produtoDto, int id);
 }

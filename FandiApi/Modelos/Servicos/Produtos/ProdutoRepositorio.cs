@@ -1,5 +1,6 @@
 using FandiApi.Infraestrutura;
 using FandiApi.Modelos.Contratos.Produtos;
+using FandiApi.Modelos.DTOS.Produtos;
 using FandiApi.Modelos.Entidades.Produtos;
 using Microsoft.EntityFrameworkCore;
 
@@ -51,9 +52,9 @@ public class ProdutoRepositorio : IProdutoRepositorio
         return (true, string.Empty);
     }
 
-    public async Task<Produto> AtualizarAsync(Produto produto, int id)
+    public async Task<Produto> AtualizarAsync(Produto produto, ProdutoDto produtoDto, int id)
     {
-        new AtualizarProduto().Atualizar(produto, id);
+        new AtualizarProduto().Atualizar(produto, produtoDto, id);
         
         _apiDbContext.Produtos.Update(produto);
         await _apiDbContext.SaveChangesAsync();

@@ -11,9 +11,9 @@ Tabela de conteúdos
  
 ## 💻 Sobre o projeto
 
-O projeto é dividido em duas partes, uma api com um CRUD para produtos e uma outra api para validar a compra.
+O projeto é dividido em três partes, uma api com um CRUD para produtos, uma outra api para validar a compra, e uma solução de testes unitarios.
 
-Tecnologias utilizadas: EntityFramework, Postgres.
+Tecnologias utilizadas: EntityFramework, Postgres, Xunit.
 
 Foram seguidos alguns principios do SOLID.
 
